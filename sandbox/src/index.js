@@ -1,9 +1,9 @@
-function log(...args) {
-  console.log(...args)    
-}
+import log from './client/log.macro'
 
 function main() {
-  log({message: 'hi there!'})
+  log({type: 'hello'});
+  log({type: 'there'});
+  log({type: 'you'});
 }
 
 main()
