@@ -18,7 +18,7 @@ const implemCallee = template.expression`
 let __id = 0;
 const genId = () => `${__id++}`
 
-const transform = (path, state) => {
+const transform = (path) => {
   const node = path.node;
   path.replaceWith(
     t.callExpression(
@@ -31,7 +31,7 @@ const transform = (path, state) => {
 module.exports = createMacro(({ state, references }) => {
   references.default.forEach(referencePath => {
     if (referencePath.parentPath.type === 'CallExpression') {
-      transform(referencePath.parentPath, state);
+      transform(referencePath.parentPath);
     } else {
       throw Error(
         'Please call directly for now. Will see what we can do about this in the future'
